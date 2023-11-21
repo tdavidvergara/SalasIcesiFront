@@ -8,7 +8,7 @@ const roomDetail = document.getElementById('roomDetail');
 
 if(window.localStorage.getItem('user') === null){
 
-    window.location.href = "/signin.html" ;
+    window.location.href = "/Registro.html" ;
 
 }else{
 
@@ -21,7 +21,7 @@ console.log(user);
 async function getInformation(){
     let sala = window.localStorage.getItem('sala');
     
-    let response = await fetch('http://127.0.0.1:8080/salasIcesi/informacion/'+sala,{
+    let response = await fetch('http://localhost:8080/salasIcesi/informacion/'+sala,{
         method: 'GET',headers: {
             'Authorization': '123'
         }
