@@ -1,12 +1,18 @@
     var salaCardContainer = document.getElementById('salaCardContainer');
     var salones = document.getElementById('salones') ;
+    var user = localStorage.getItem('user');
 
 
-    /*if (window.localStorage.getItem('usuario') === null) {
+    if (user === null) {
         window.location.href = "/Registro.html";
+        console.log(user) ;
     } else {
-        var user = JSON.parse(window.localStorage.getItem('usuario'));
-    }*/
+        var user = JSON.parse(window.localStorage.getItem(user));
+    }
+    
+  
+  
+    
     async function getSalas(){
 
         let edificio = window.localStorage.getItem('Edificio');
