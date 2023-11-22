@@ -1,3 +1,9 @@
+    var salaCardContainer = document.getElementById('salaCardContainer');
+    var salones = document.getElementById('salones') ;
+    var user = localStorage.getItem('user');
+
+
+
 var salaCardContainer = document.getElementById('salaCardContainer');
 var user = localStorage.getItem('user');
 
@@ -7,6 +13,20 @@ var user = localStorage.getItem('user');
     } else {
         var user = JSON.parse(window.localStorage.getItem(user));
     }
+
+    
+  
+  
+    
+    async function getSalas(){
+
+        let edificio = window.localStorage.getItem('Edificio');
+        if(edificio === "Ver Salones Disponibles del E"){
+            var edificioId = 'E' ;
+        }else if(edificio === "Ver Salones Disponibles del B"){
+
+            var edificioId = 'B' ;
+
 
         async function getSalas() {
             let edificio = window.localStorage.getItem('Edificio');
