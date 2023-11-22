@@ -20,6 +20,7 @@ class SalaCard {
         button.type = 'button';
         button.className = 'btn btn-primary btn-lg';
         button.innerText = this.sala.numSala;
+        button.id = "salones" ;
             
         col.appendChild(button);
         row.appendChild(col);
