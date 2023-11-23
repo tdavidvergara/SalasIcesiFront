@@ -7,15 +7,17 @@ var user = localStorage.getItem('user');
 var salaId = localStorage.getItem('salaId') ;
 var hora ;
 var horarioButtons = document.querySelectorAll('.btn-primary');
-
-
-console.log(salaId) ;
+var user = localStorage.getItem('user');
+let data = JSON.parse(user);
 
 
 if (user === null) {
     window.location.href = "/Registro.html";
+
 } else {
-    var user = JSON.parse(window.localStorage.getItem(user));
+    user = JSON.parse(user);
+    console.log(user) ;
+
 }
 
 async function getInformation() {
@@ -41,6 +43,7 @@ horarioButtons.forEach(function (button) {
        
           // Desactiva clicked en todos los botones
           horarioButtons.forEach(function (otherButton) {
+
             if (otherButton !== button) {
                 otherButton.classList.remove('clicked');
             }
@@ -48,19 +51,26 @@ horarioButtons.forEach(function (button) {
         const clicked = this.classList.toggle('clicked');
         if (clicked) {
             console.log(hora);
-        }   
+        }
     });
 });
 
 guardarButton.addEventListener('click', async function (event) {
+
     event.preventDefault();
     var fecha = fechaInput.value;
     console.log(fecha); 
+    if (!fecha || !hora) {
+        alert('Olvidaste la fecha o la Fecha de la reserva');
+        window.location.reload(); // Recargar la página
+
+        return; 
+    }
 
     var gestionSalaDTO = {
         hora: hora,
         dia: fecha.toString(),
-        idUsuario: "1",
+        idUsuario: data.id,
         idSala: salaId,
     
     };
@@ -77,10 +87,16 @@ guardarButton.addEventListener('click', async function (event) {
         body: json
     });
 
+
     if (response.status === 200) {
           window.location.href = '/ReservaHecha.html';
 
+    }else{
+        alert('Error en la solicitud');
+        window.location.reload(); // Recargar la página
     }
+
+    
 } catch (error) {
     console.error('Error en la Solicitud ', error);
     console.log(await response.text());
@@ -90,4 +106,5 @@ guardarButton.addEventListener('click', async function (event) {
 
 
 getInformation();
+
 

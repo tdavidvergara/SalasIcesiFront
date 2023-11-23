@@ -65,6 +65,13 @@
 			border-color: #6A67FF;
 			color: white;	
 			
+		}.btn-lg{
+
+			margin: 8px;
+			background-color: aliceblue;
+			color: black;
+
+
 		}
     </style>
 </head>
@@ -105,9 +112,9 @@
 				<br></br>
 				<br></br>
 
-				<button type="button" class="btn btn-primary" id = "horario-btn">7:00</button>
-				<button type="button" class="btn btn-primary" id = "horario-btn">8:00</button>
-				<button type="button" class="btn btn-primary" id = "horario-btn">9:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">07:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">08:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">09:00</button>
 				<button type="button" class="btn btn-primary" id = "horario-btn">10:00</button>
 				<button type="button" class="btn btn-primary" id = "horario-btn">11:00</button>
 				<button type="button" class="btn btn-primary" id = "horario-btn">12:00</button>
@@ -119,12 +126,13 @@
 				<button type="button" class="btn btn-primary" id = "horario-btn">18:00</button>
 				
 				
+
 				
 			</div> 			
 			<label for="fecha">Selecciona una fecha:</label>
 			<input type="date" id="fecha" name="fecha">
 			<button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-				Launch demo modal
+				Reservar Sala
 			  </button>
 			  
 		</div>
@@ -142,15 +150,35 @@
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
-		  ¿Estás seguro que quieres reservar esta <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>?
+		  ¿Estás seguro que quieres reservar esta sala?
 		</div>
 		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" style = "background-color:crimson;border-color: crimson;"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 		  <button type="button" class="btn btn-secondary" id="guardar">Confirmar</button>
 		</div>
 	  </div>
 	</div>
   </div>
+
+    <!-- Modal -->
+	<div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Reserva</h1>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  ¿Estás seguro que quieres reservar esta sala?
+			</div>
+			<div class="modal-footer">
+			  <button type="button" style = "background-color:crimson;border-color: crimson;"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-secondary" id="guardar">Confirmar</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	
 
 	
 		  
