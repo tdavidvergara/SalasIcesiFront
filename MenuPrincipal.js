@@ -1,5 +1,7 @@
 var user = localStorage.getItem('user');
-var categoria  = responeData.categoria ;
+let data = JSON.parse(user);
+
+console.log(data.id) ;
 
     if (user === null) {
         window.location.href = "/Registro.html";
