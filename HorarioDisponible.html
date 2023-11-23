@@ -32,49 +32,46 @@
             flex-direction: column;
             align-items: center;
 
-        }.contenedor{	
-	
-			width: 70%;
-			height: 70%;
-			border: none;
-			margin: 20px 0;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
+        }
 
-        }.col{
+        .col{
             height: 60px;
             justify-content: center;
             align-self: center;
-        }
+        
 
-        .cambiarColor:checked + label {
-            background-color: #6A67FF;
-			border-color: #6A67FF;
-		}
+    
 
-        .cambiarColor {
+        }.btn-primary{
 
-            display: none;
-
-        }.btn-lg{
-
-			margin: 5px;
+			margin: 8px;
 			width: 50%;
+			height: 1cm;
 			color: black;
 			background-color: #68F66E;
 			border-color: #68F66E;
-		
+			padding: 15px;
+
 
 		}body{
 			justify-content: center;
+			
+		} .btn-primary.clicked {
+            background-color: #6A67FF ;
+			border-color: #6A67FF;
+			color: white;
+        }.btn-secondary{
+			background-color: #6A67FF ;
+			border-color: #6A67FF;
+			color: white;	
+			
 		}
     </style>
 </head>
 <body>
 
 	<div id="roomDetail" class="roomDetail">
-		<a style="align-self: flex-start; justify-self: flex-start;position: absolute ; top:0 ;" href="EdificioE_piso1.html"><img src="Imagenes/back.png"></a>
+		<a style="align-self: flex-start; justify-self: flex-start;position: absolute ; top:0 ; margin: 5px;" href="Edificio.html"><img src="Imagenes/back.png"></a>
 
 	</div>
 
@@ -102,54 +99,58 @@
 
 
 
-			<div class="contenedor">
-				<input type="checkbox" id="boton1" class="cambiarColor">
-				<label for="boton1" class="btn btn-primary btn-lg">7:00am</label>
+			<div class="contenedor d-flex flex-column">
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
 
-				<input type="checkbox" id="boton2" class="cambiarColor">
-				<label for="boton2" class="btn btn-primary btn-lg">8:00am</label>
+				<button type="button" class="btn btn-primary" id = "horario-btn">7:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">8:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">9:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">10:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">11:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">12:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">13:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">14:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">15:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">16:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">17:00</button>
+				<button type="button" class="btn btn-primary" id = "horario-btn">18:00</button>
 				
-				<input type="checkbox" id="boton3" class="cambiarColor">
-				<label for="boton3" class="btn btn-primary btn-lg">9:00am</label>
-		
-				<input type="checkbox" id="boton4" class="cambiarColor">
-				<label for="boton4" class="btn btn-primary btn-lg">10:00am</label>
 				
-				<input type="checkbox" id="boton5" class="cambiarColor">
-				<label for="boton5" class="btn btn-primary btn-lg">11:00am</label>			
-				
-				<input type="checkbox" id="boton6" class="cambiarColor">
-				<label for="boton6" class="btn btn-primary btn-lg">12:00m</label>
-			
-				<input type="checkbox" id="boton7" class="cambiarColor">
-				<label for="boton7" class="btn btn-primary btn-lg">1:00pm</label>
-
-				<input type="checkbox" id="boton8" class="cambiarColor">
-				<label for="boton8" class="btn btn-primary btn-lg">2:00pm</label>
-
-				<input type="checkbox" id="boton9" class="cambiarColor">
-				<label for="boton9" class="btn btn-primary btn-lg">3:00pm</label>
-
-				<input type="checkbox" id="boton10" class="cambiarColor">
-				<label for="boton10" class="btn btn-primary btn-lg">4:00pm</label>
-
-				<input type="checkbox" id="boton11" class="cambiarColor">
-				<label for="boton11" class="btn btn-primary btn-lg">5:00pm</label>
-
-				<input type="checkbox" id="boton12" class="cambiarColor">
-				<label for="boton12" class="btn btn-primary btn-lg">6:00pm</label>
-
-				<input type="checkbox" id="boton13" class="cambiarColor">
-				<label for="boton13" class="btn btn-primary btn-lg">7:00pm</label>
 				
 			</div> 			
 			<label for="fecha">Selecciona una fecha:</label>
 			<input type="date" id="fecha" name="fecha">
-			<button style= "margin: 18px; background-color: white; border-color: wheat;color: black;" type="button" class="btn btn-primary" id="guardar">Guardar</button>
-
+			<button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				Launch demo modal
+			  </button>
+			  
 		</div>
 
 
+		 <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Reserva</h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  ¿Estás seguro que quieres reservar esta <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>?
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-secondary" id="guardar">Confirmar</button>
+		</div>
+	  </div>
+	</div>
+  </div>
 
 	
 		  

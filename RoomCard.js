@@ -18,9 +18,15 @@ class RoomCard{
           
         const cardImg = document.createElement('img');
         cardImg.className = 'card-img-top';
-        cardImg.src = 'Imagenes/SalonDefault.jpeg';
+        const numSala = 'Imagenes/'+this.sala.numSala+'.jpg'; 
+        var salaId  = this.sala.id ;
+        window.localStorage.setItem('salaId', salaId);
+        cardImg.src = numSala;
         card.appendChild(cardImg);
-      
+     
+        
+    
+    
         const cardBody = document.createElement('div');
         cardBody.className = 'card-body';
         cardBody.style.justifyContent = 'center';
@@ -43,9 +49,15 @@ class RoomCard{
         feature2.textContent = "Recursos: "+this.sala.recursos ;
         featuresList.appendChild(feature2);
 
+        const feature3 = document.createElement('li');
+        feature3.id = 'item3';
+        feature3.textContent = "Id de Sala: "+salaId ;
+        featuresList.appendChild(feature3);
+
         fotoDiv.appendChild(cardBody);
+        featuresList.appendChild(feature3) ;
         featuresList.appendChild(feature2) ;
-        featuresList.appendChild(feature1)   ;
+        featuresList.appendChild(feature1) ;
         card.appendChild(fotoDiv) ;
         card.appendChild(featuresList)
 

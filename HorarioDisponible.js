@@ -3,18 +3,20 @@ const roomDetail = document.getElementById('roomDetail');
 const guardarButton = document.getElementById('guardar');
 const sala = window.localStorage.getItem('sala');
 const fechaInput = document.getElementById('fecha');
-let horaSeleccionada ;
-
-
 var user = localStorage.getItem('user');
+var salaId = localStorage.getItem('salaId') ;
+var hora ;
+var horarioButtons = document.querySelectorAll('.btn-primary');
+
+
+console.log(salaId) ;
+
 
 if (user === null) {
     window.location.href = "/Registro.html";
 } else {
     var user = JSON.parse(window.localStorage.getItem(user));
 }
-
-console.log(user);
 
 async function getInformation() {
     let response = await fetch('http://localhost:8080/salasIcesi/informacion/' + sala, {
@@ -29,57 +31,63 @@ async function getInformation() {
         var card = new RoomCard(json);
         console.log(card.render());
         roomDetail.appendChild(card.render());
-        setupHoraButtons() ; 
-        alert(await response.text());
     }
 }
 
+horarioButtons.forEach(function (button) {
 
-function setupHoraButtons() {
-    const horaButtons = document.querySelectorAll('cambiarColor');
-
-    horaButtons.forEach(function (boton) {
-        boton.addEventListener('click', function (event) {
-            horaSeleccionada = event.target.innerHTML;
-            cambiarColor(boton);
-            console.log('Hora seleccionada:', horaSeleccionada);
+    button.addEventListener('click', function () {
+        hora = this.textContent;
+       
+          // Desactiva clicked en todos los botones
+          horarioButtons.forEach(function (otherButton) {
+            if (otherButton !== button) {
+                otherButton.classList.remove('clicked');
+            }
         });
+        const clicked = this.classList.toggle('clicked');
+        if (clicked) {
+            console.log(hora);
+        }   
     });
-}
+});
 
-guardarButton.addEventListener('click', async function () {
-    // Obtenemos la hora seleccionada
-         // Creamos un objeto con la información de la sala
+guardarButton.addEventListener('click', async function (event) {
+    event.preventDefault();
+    var fecha = fechaInput.value;
+    console.log(fecha); 
+
     var gestionSalaDTO = {
-        idSala: sala,
-        idUsuario: 1    , // Utilizamos el ID del usuario obtenido del local storage
-        dia: fechaInput,
-        hora: horaSeleccionada,
+        hora: hora,
+        dia: fecha.toString(),
+        idUsuario: "1",
+        idSala: salaId,
+    
     };
 
-    // Convertimos el objeto en un string JSON
     var json = JSON.stringify(gestionSalaDTO);
-
-    // Enviamos la solicitud POST al servidor con los datos del objeto
-    let response = await fetch('http://localhost:8080/salasIcesi/reservarSala', {
+    console.log(json);
+    try{
+    let response = await fetch('http://127.0.0.1:8080/salasIcesi/reservas/sala', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': '123'
+            'Authorization': '1'
         },
         body: json
     });
 
-    // Procesamos la respuesta del servidor
     if (response.status === 200) {
-        let respuesta = await response.text();
-        alert(respuesta); // Mostramos el mensaje de éxito
-    } else {
-        alert(await response.text()); // Mostramos el mensaje de error
-    }
-    
+          window.location.href = '/ReservaHecha.html';
 
-   
+    }
+} catch (error) {
+    console.error('Error en la Solicitud ', error);
+    console.log(await response.text());
+}
+
 });
 
+
 getInformation();
+
