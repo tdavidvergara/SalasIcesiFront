@@ -33,6 +33,7 @@ async function getInformation() {
         var card = new RoomCard(json);
         console.log(card.render());
         roomDetail.appendChild(card.render());
+
     }
 }
 
@@ -43,7 +44,7 @@ horarioButtons.forEach(function (button) {
        
           // Desactiva clicked en todos los botones
           horarioButtons.forEach(function (otherButton) {
-
+            
             if (otherButton !== button) {
                 otherButton.classList.remove('clicked');
             }
@@ -52,16 +53,24 @@ horarioButtons.forEach(function (button) {
         if (clicked) {
             console.log(hora);
         }
+        verDisponibilidad();
+     
+        
     });
 });
+
+var fecha = fechaInput.value;
+console.log(fecha); 
+verDisponibilidad() ;
+
 
 guardarButton.addEventListener('click', async function (event) {
 
     event.preventDefault();
-    var fecha = fechaInput.value;
-    console.log(fecha); 
+ 
+
     if (!fecha || !hora) {
-        alert('Olvidaste la fecha o la Fecha de la reserva');
+        alert('Olvidaste la fecha o la hora de la reserva');
         window.location.reload(); // Recargar la página
 
         return; 
@@ -107,4 +116,16 @@ guardarButton.addEventListener('click', async function (event) {
 
 getInformation();
 
+
+async function verDisponibilidad(){
+
+    let response = await fetch('http://localhost:8080/salasIcesi/' +sala+'/'+fecha.toString(),{
+        method: 'GET',
+        headers: {
+            'Authorization': '123'
+        }
+    });
+    let json = await response.json();
+        console.log(json);
+}
 
