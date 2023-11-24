@@ -50,6 +50,14 @@ class InfoRervaCard{
         feature3.textContent = "Dia de Reserva: " +this.sala.dia;
         featuresList.appendChild(feature3);
 
+        let feature4 = document.createElement('li');
+        feature4.id = 'item1';
+        var idSala = this.sala.id
+        feature4.textContent = "id: " +idSala;
+        window.localStorage.setItem('idSala',idSala )  ;
+
+        featuresList.appendChild(feature4);
+
         description.style.margin ="10px"
 
         cardbody.appendChild(title);
@@ -58,9 +66,9 @@ class InfoRervaCard{
         foto.appendChild(cardbody);
         cardbody.appendChild(featuresList)  ;
         cardbody.appendChild(button ) ;
-        title.innerHTML = this.sala.numSala;
+        title.innerHTML = this.sala.numSala ;
 
-            button.addEventListener('click', this.action.bind(this)) ;
+        button.addEventListener('click', this.action.bind(this)) ;
 
 
         return foto;
