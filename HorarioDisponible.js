@@ -3,7 +3,6 @@ const roomDetail = document.getElementById('roomDetail');
 const guardarButton = document.getElementById('guardar');
 const sala = window.localStorage.getItem('sala');
 const fechaInput = document.getElementById('fecha');
-var user = localStorage.getItem('user');
 var salaId = localStorage.getItem('salaId') ;
 var hora ;
 var horarioButtons = document.querySelectorAll('.btn-primary');
@@ -87,19 +86,26 @@ guardarButton.addEventListener('click', async function (event) {
         body: json
     });
 
-
     if (response.status === 200) {
-          window.location.href = '/ReservaHecha.html';
-
-    }else{
+        var jsonSala = JSON.stringify(gestionSalaDTO);
+        localStorage.setItem('jsonSala', jsonSala);
+        window.location.href = '/ReservaHecha.html';
+        
+    } else {
         alert('Error en la solicitud');
         window.location.reload(); // Recargar la página
+        localStorage.removeItem(jsonSala); // Evita que queden salas en el local storage no deseadas
+
     }
+    
 
     
 } catch (error) {
     console.error('Error en la Solicitud ', error);
     console.log(await response.text());
+    localStorage.removeItem(jsonSala); // Evita que queden salas en el local storage no deseadas
+
+
 }
 
 });
