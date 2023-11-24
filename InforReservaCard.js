@@ -69,6 +69,7 @@ class InfoRervaCard{
         title.innerHTML = this.sala.numSala ;
 
         button.addEventListener('click', this.action.bind(this)) ;
+        
 
 
         return foto;
@@ -90,4 +91,4 @@ class InfoRervaCard{
 
 
     }
-
+    

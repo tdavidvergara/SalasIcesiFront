@@ -75,7 +75,6 @@ guardarButton.addEventListener('click', async function (event) {
     };
 
     var json = JSON.stringify(gestionSalaDTO);
-    console.log(json);
     try{
     let response = await fetch('http://127.0.0.1:8080/salasIcesi/reservas/sala', {
         method: 'POST',
