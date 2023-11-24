@@ -26,7 +26,8 @@ class InfoRervaCard{
         let button = document.createElement('button') ;
         button.classList.add('btn') ;
         button.classList.add('btn-danger') ;
-        button.setAttribute('href', '#') ; 
+        button.setAttribute('data-bs-toggle', 'modal'); // Añade este atributo
+        button.setAttribute('data-bs-target', '#cancelar'); // Añade este atributo
         button.innerHTML = "Cancelar Reserva"
         
 

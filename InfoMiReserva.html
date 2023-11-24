@@ -9,36 +9,22 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Mis Reservas</title>
     <style>
+      #foto{
+        display: flex; /*Flexbox*/
+        flex-wrap: wrap;
+        flex-direction: row;
+      }#foto div{
+      margin: 15px;
+      
+  }
 
-        .foto {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            width: 100%;
-            margin: 5cm ;
-            border-color: black;
-            border-style: dotted;
-        }
-
-        .contenedor {
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; 
-            border-color: black;
-            border-style: dotted;
-        }.{
-          
-        }
     </style>
 </head>
 <body>
-    <div class="contenedor">
+    
         <div id="foto" class="foto">
             <a href="MenuPrincipal.html"><img style="margin: 10px;" src="Imagenes/back.png"></a>
         </div>
-    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="cancelar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
