@@ -15,6 +15,7 @@ class RoomCard{
         const card = document.createElement('div');
         card.className = 'card mb-3';
         card.style.width = '80%';
+
           
         const cardImg = document.createElement('img');
         cardImg.className = 'card-img-top';
