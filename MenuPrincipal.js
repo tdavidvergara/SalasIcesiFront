@@ -21,3 +21,5 @@ VerReservasId.addEventListener('click', async function (event) {
       }
 
     }); 
+
+    
