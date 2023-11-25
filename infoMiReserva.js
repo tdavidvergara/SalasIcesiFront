@@ -50,9 +50,13 @@ cancelarButton.addEventListener('click',function(){
         }
     });
     if (response.status === 200) {
-        window.localStorage.removeItem('salaId') ;
-        window.location.href = '/ReservaCancelada.html';
-        window.localStorage.removeItem(jsonString) ;
+        localStorage.removeItem('salaId') ;
+        localStorage.removeItem('jsonSala') ;
+        console.log('jsonSala') ;
+        console.log('salaId') ;
+
+
+        //window.location.href = '/ReservaCancelada.html';
 
         
     } else {

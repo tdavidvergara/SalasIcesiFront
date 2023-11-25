@@ -12,14 +12,21 @@ class InfoRervaCard{
         
         let foto = document.createElement('div'); //<div></div>
         foto.classList.add('card');
+        foto.style.width = '40%' ;
+        foto.style.height = '110vh' ;
+
 
         let img = document.createElement('img');
         img.classList.add('card-img-top');
         img.setAttribute('src', 'Imagenes/'+this.sala.numSala+'.jpg');
+        img.style.width = '100%' ;
+        img.style.height = '80%' ;
+
 
         let cardbody = document.createElement('div');
         cardbody.classList.add('card-body');
-        cardbody.style.margin = "1cm";
+
+
 
         let title = document.createElement('h5');
         title.classList.add('card-title');
@@ -27,8 +34,8 @@ class InfoRervaCard{
         let button = document.createElement('button') ;
         button.classList.add('btn') ;
         button.classList.add('btn-danger') ;
-        button.setAttribute('data-bs-toggle', 'modal'); // Añade este atributo
-        button.setAttribute('data-bs-target', '#cancelar'); // Añade este atributo
+        button.setAttribute('data-bs-toggle', 'modal');
+        button.setAttribute('data-bs-target', '#cancelar'); 
         button.innerHTML = "Cancelar Reserva"
         
 
@@ -66,7 +73,7 @@ class InfoRervaCard{
         foto.appendChild(img);
         foto.appendChild(cardbody);
         cardbody.appendChild(featuresList)  ;
-        cardbody.appendChild(button ) ;
+        cardbody.appendChild(button) ;
         title.innerHTML = this.sala.numSala ;
 
         button.addEventListener('click', this.action.bind(this)) ;
