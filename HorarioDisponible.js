@@ -93,8 +93,8 @@ guardarButton.addEventListener('click', async function (event) {
         
     } else {
         alert('Error en la solicitud');
+        window.localStorage.removeItem(jsonSala) // Evita que queden salas en el local storage no deseadas
         window.location.reload(); // Recargar la página
-        localStorage.removeItem(jsonSala); // Evita que queden salas en el local storage no deseadas
 
     }
     
