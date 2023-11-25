@@ -54,9 +54,7 @@ cancelarButton.addEventListener('click',function(){
         localStorage.removeItem('jsonSala') ;
         console.log('jsonSala') ;
         console.log('salaId') ;
-
-
-        //window.location.href = '/ReservaCancelada.html';
+        window.location.href = '/ReservaCancelada.html';
 
         
     } else {

@@ -9,7 +9,6 @@ if (user === null) {
     console.log(user);
     console.log(sala) ;
 
-    // Si necesitas el objeto de usuario, puedes usar 'data' en esta rama
 }
 //let data = JSON.parse(user);
 
