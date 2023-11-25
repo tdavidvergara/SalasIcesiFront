@@ -75,6 +75,7 @@ guardarButton.addEventListener('click', async function (event) {
     };
 
     var json = JSON.stringify(gestionSalaDTO);
+    console.log(json);
     try{
     let response = await fetch('http://127.0.0.1:8080/salasIcesi/reservas/sala', {
         method: 'POST',
@@ -93,7 +94,7 @@ guardarButton.addEventListener('click', async function (event) {
     } else {
         alert('Error en la solicitud');
         window.location.reload(); // Recargar la página
-        localStorage.removeItem(jsonSala); // Evita que queden salas en el local storage no deseadas
+        window.localStorage.removeItem(jsonSala) // Evita que queden salas en el local storage no deseadas
 
     }
     

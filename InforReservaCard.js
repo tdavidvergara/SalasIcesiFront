@@ -3,6 +3,7 @@ class InfoRervaCard{
 
     constructor(sala){
         this.sala = sala;
+        this.id = sala.id;
     }
 
     
@@ -54,7 +55,7 @@ class InfoRervaCard{
         feature4.id = 'item1';
         var idSala = this.sala.id
         feature4.textContent = "id: " +idSala;
-        window.localStorage.setItem('idSala',idSala )  ;
+        window.localStorage.setItem('idSala', idSala )  ;
 
         featuresList.appendChild(feature4);
 
@@ -71,12 +72,9 @@ class InfoRervaCard{
         button.addEventListener('click', this.action.bind(this)) ;
         
 
-
         return foto;
         
 
-      
-   
       
 
       }   
@@ -91,4 +89,4 @@ class InfoRervaCard{
 
 
     }
-    
+
