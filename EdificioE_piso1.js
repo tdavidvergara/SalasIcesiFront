@@ -1,5 +1,20 @@
 var salaCardContainer = document.getElementById('salaCardContainer');
 var user = localStorage.getItem('user');
+var backId = document.getElementById('backId');
+var CATEGORIA = localStorage.getItem('Categoria')  ;
+
+
+
+    backId.addEventListener('click', function() {
+        if(CATEGORIA === 'ADMINNISTRADOR'){
+            window.location.href = "/MapaUniversidadAdmin.html";
+        }else if(CATEGORIA === 'ESTUDIANTE'){
+            window.location.href = "/MapaUniversidad.html";
+
+        }
+
+
+    });
 
     if (user === null) {
         window.location.href = "/Registro.html";
@@ -48,5 +63,11 @@ var user = localStorage.getItem('user');
             event.preventDefault();
             var salonSeleccionado = event.target.innerHTML;
             window.localStorage.setItem("sala", salonSeleccionado);
-            window.location.href = "/HorarioDisponible.html";
+            if(CATEGORIA === 'ADMINNISTRADOR'){
+                window.location.href = "/GestionSala.html";
+            }else if(CATEGORIA === 'ESTUDIANTE'){
+                window.location.href = "/HorarioDisponible.html";
+    
+            }
+            
         }
