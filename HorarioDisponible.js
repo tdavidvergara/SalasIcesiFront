@@ -3,17 +3,19 @@ const roomDetail = document.getElementById('roomDetail');
 const guardarButton = document.getElementById('guardar');
 const sala = window.localStorage.getItem('sala');
 const fechaInput = document.getElementById('fecha');
+var salaId = localStorage.getItem('salaId') ;
 var hora ;
 var horarioButtons = document.querySelectorAll('.btn-primary');
 var user = localStorage.getItem('user');
 let data = JSON.parse(user);
-var salaId ;
+
 
 if (user === null) {
     window.location.href = "/Registro.html";
 
 } else {
     user = JSON.parse(user);
+    console.log(user) ;
 
 }
 
@@ -30,9 +32,6 @@ async function getInformation() {
         var card = new RoomCard(json);
         console.log(card.render());
         roomDetail.appendChild(card.render());
-        salaId = localStorage.getItem('salaId') ;
-        console.log (salaId)
-
     }
 }
 
@@ -61,7 +60,7 @@ guardarButton.addEventListener('click', async function (event) {
     var fecha = fechaInput.value;
     console.log(fecha); 
     if (!fecha || !hora) {
-        alert('Olvidaste la fecha o la hora de la reserva');
+        alert('Olvidaste la fecha o la Fecha de la reserva');
         window.location.reload(); // Recargar la página
 
         return; 
@@ -74,7 +73,7 @@ guardarButton.addEventListener('click', async function (event) {
         idSala: salaId,
     
     };
-
+    //darle un atributo a cancelar?????
     var json = JSON.stringify(gestionSalaDTO);
     console.log(json);
     try{
@@ -94,8 +93,8 @@ guardarButton.addEventListener('click', async function (event) {
         
     } else {
         alert('Error en la solicitud');
-        localStorage.removeItem(jsonSala) // Evita que queden salas en el local storage no deseadas
         window.location.reload(); // Recargar la página
+        localStorage.removeItem(jsonSala); // Evita que queden salas en el local storage no deseadas
 
     }
     

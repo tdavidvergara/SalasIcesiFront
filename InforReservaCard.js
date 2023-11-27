@@ -15,6 +15,8 @@ class InfoRervaCard{
         foto.style.width = '40%' ;
         foto.style.height = '110vh' ;
 
+        var idSala = this.sala.id
+
 
         let img = document.createElement('img');
         img.classList.add('card-img-top');
@@ -36,8 +38,9 @@ class InfoRervaCard{
         button.classList.add('btn-danger') ;
         button.setAttribute('data-bs-toggle', 'modal');
         button.setAttribute('data-bs-target', '#cancelar'); 
-        button.innerHTML = "Cancelar Reserva"
-        
+        button.innerHTML = "Cancelar Reserva"+ idSala ;
+        button.setAttribute('id', 'buttonCard' );
+
 
         let description = document.createElement('p') ;
         description.classList.add('card-text') ;
@@ -58,13 +61,9 @@ class InfoRervaCard{
         feature3.textContent = "Dia de Reserva: " +this.sala.dia;
         featuresList.appendChild(feature3);
 
-        let feature4 = document.createElement('li');
-        feature4.id = 'item1';
-        var idSala = this.sala.id
-        feature4.textContent = "id: " +idSala;
+
         window.localStorage.setItem('idSala', idSala )  ;
 
-        featuresList.appendChild(feature4);
 
         description.style.margin ="10px"
 

@@ -23,13 +23,13 @@ async function getInformation() {
         if (jsonSala === null || jsonSala.length === 0) {
             hideSpinner(2000) ;
             window.location.href = '/NoReservas.html';
-
         } 
+
         jsonSala.forEach(salon => {
             var card = new InfoRervaCard(salon);
             foto.appendChild(card.render());
             console.log(card) ;
-            window.localStorage.setItem('salaId'+card.id, card.id) ;
+            window.localStorage.setItem('salaId', card.id) ;
         });
 
 
@@ -40,7 +40,9 @@ async function getInformation() {
 
 
 cancelarButton.addEventListener('click',function(){
-    deleteRoom() ;
+    let valorDelBoton = cancelarButton.innerHTML;
+    console.log(valorDelBoton) ; 
+    deleteRoom(valorDelBoton) ;
 
 }) ;
 
@@ -56,17 +58,16 @@ function hideSpinner(duration = 0) {
     }, duration);
 }
 
-    async function deleteRoom(){
-    let response = await fetch('http://localhost:8080/salasIcesi/misReservas/cancelar/'+  window.localStorage.getItem('salaId'), {
+    async function deleteRoom(salaId){
+    let response = await fetch('http://localhost:8080/salasIcesi/misReservas/cancelar/'+  salaId, {
         method: 'DELETE',
         headers: {
             'Authorization': '123'
         }
     });
     if (response.status === 200) {
-
+        localStorage.removeItem= 'salaId' ;
         window.location.href= '/ReservaCancelada.html'; 
-        localStorage.removeItem = ('num'+sala.id) ;
 
       
     } else {

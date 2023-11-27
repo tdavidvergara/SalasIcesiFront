@@ -1,13 +1,13 @@
 const VerReservasId = document.getElementById('VerReservasId');
 var user = JSON.parse(localStorage.getItem('user'));
 var sala = JSON.parse(localStorage.getItem('jsonSala'));
+console.log(sala) ;
 
 if (user === null) {
     window.location.href = "/Registro.html";
 
 } else {
     console.log(user);
-    console.log(sala) ;
 
 }
 //let data = JSON.parse(user);
