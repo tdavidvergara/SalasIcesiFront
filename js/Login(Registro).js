@@ -36,9 +36,12 @@ ingresarId.addEventListener('click', async function (event) {
  
       // Verificar la categoría y redirigir a la página correspondiente
       if (responseData.categoria === 'ESTUDIANTE' || responseData.categoria === 'PROFESOR') {
+        localStorage.setItem('Categoria', responseData.categoria)  ;
        window.location.href = 'MenuPrincipal.html';
       } else if (responseData.categoria === 'ADMINNISTRADOR') {
+        localStorage.setItem('Categoria',responseData.categoria)  ;
         window.location.href = 'AdminPrincipal.html';
+
       } else {
         console.error('Categoría desconocida');
       }

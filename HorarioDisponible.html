@@ -45,14 +45,16 @@
         }.btn-primary{
 
 			margin: 8px;
-			width: 50%;
-			height: 1cm;
-			color: black;
-			background-color: #68F66E;
-			border-color: #68F66E;
-			padding: 15px;
-
-
+            width: 50%;
+            height: 1cm;
+            color: black;
+            background-color: #68F66E;
+            border-color: #68F66E;
+            padding: 15px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+			
 		}body{
 			justify-content: center;
 			
@@ -78,7 +80,7 @@
 <body>
 
 	<div id="roomDetail" class="roomDetail">
-		<a style="align-self: flex-start; justify-self: flex-start;position: absolute ; top:0 ; margin: 5px;" href="Edificio.html"><img src="Imagenes/back.png"></a>
+		<a style="align-self: flex-start; justify-self: flex-start;position: absolute ; top:0 ; margin: 5px;" id="backId"><img src="Imagenes/back.png"></a>
 
 	</div>
 
@@ -160,26 +162,7 @@
 	</div>
   </div>
 
-    <!-- Modal -->
-	<div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Reserva</h1>
-			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-			  ¿Estás seguro que quieres reservar esta sala?
-			</div>
-			<div class="modal-footer">
-			  <button type="button" style = "background-color:crimson;border-color: crimson;"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			  <button type="button" class="btn btn-secondary" id="guardar">Confirmar</button>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	
-
+    
 	
 		  
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
