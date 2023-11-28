@@ -69,12 +69,13 @@ if (user === null) {
         });
     
         if (response.status === 200) {
-            window.location.href = '/ReservaHecha.html';
-            
+        
+            console.log(json) ;
+            window.location.href  = "/SolicitudCompletada.html"  ;
         } else {
-            alert('Error en la solicitud');
-            window.location.reload(); // Recargar la página
-    
+            alert('Esta sala no se puede reservar'); 
+            window.location.reload();
+            
         }
         
     
@@ -82,6 +83,8 @@ if (user === null) {
     } catch (error) {
         console.error('Error en la Solicitud ', error);
         console.log(await response.text());
+        window.location.reload(); // Recargar la página
+
     
     
     }
