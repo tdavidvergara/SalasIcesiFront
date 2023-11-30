@@ -55,6 +55,7 @@ if(CATEGORIA === 'ADMINNISTRADOR'){
     getInformation();
     
 }else if(CATEGORIA === 'ESTUDIANTE'){
+
     horarioButtons.forEach(function (button) {
 
         button.addEventListener('click', function () {
@@ -73,8 +74,8 @@ if(CATEGORIA === 'ADMINNISTRADOR'){
             }
         });
     });
-}
-    
+
+
     guardarButton.addEventListener('click', async function (event) {
         event.preventDefault();
         var fecha = fechaInput.value;
@@ -132,6 +133,9 @@ if(CATEGORIA === 'ADMINNISTRADOR'){
     
     
     getInformation();
+}
+    
+ 
     
 async function getInformation() {
     let response = await fetch('http://localhost:8080/salasIcesi/informacion/' + sala, {
@@ -150,72 +154,5 @@ async function getInformation() {
 }
 
 
-horarioButtons.forEach(function (button) {
-
-    button.addEventListener('click', function () {
-        hora = this.textContent;
-       
-          // Desactiva clicked en todos los botones
-          horarioButtons.forEach(function (otherButton) {
-
-            if (otherButton !== button) {
-                otherButton.classList.remove('clicked');
-            }
-        });
-        const clicked = this.classList.toggle('clicked');
-        if (clicked) {
-            console.log(hora);
-        }
-    });
-});
-
-guardarButton.addEventListener('click', async function (event) {
-
-    event.preventDefault();
-    var fecha = fechaInput.value;
-    console.log(fecha); 
-    if (!fecha || !hora) {
-        alert('Olvidaste la fecha o la Fecha de la reserva');
-        window.location.reload(); // Recargar la página
-
-        return; 
-    }
-
-    var gestionSalaDTO = {
-        hora: hora,
-        dia: fecha.toString(),
-        idUsuario: data.id,
-        idSala: salaId,
-    
-    };
-    var json = JSON.stringify(gestionSalaDTO);
-    console.log(json);
-    try{
-    let response = await fetch('http://127.0.0.1:8080/salasIcesi/reservas/sala', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': '1'
-        },
-        body: json
-    });
-
-    if (response.status === 200) {
-        var jsonSala = JSON.stringify(gestionSalaDTO);
-        localStorage.setItem('jsonSala', jsonSala);
-        window.location.href = '/ReservaHecha.html';
-        
-    } else {
-        alert('Error en la solicitud');
-        window.location.reload(); // Recargar la página
-        localStorage.removeItem(jsonSala); // Evita que queden salas en el local storage no deseadas
-
-    }
-    
-}catch{
-    alert("error") ;
-}
-
-}) ;
 
  
