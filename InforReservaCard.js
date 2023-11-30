@@ -38,7 +38,7 @@ class InfoRervaCard{
         button.classList.add('btn-danger') ;
         button.setAttribute('data-bs-toggle', 'modal');
         button.setAttribute('data-bs-target', '#cancelar'); 
-        button.innerHTML = "Cancelar Reserva"+ idSala ;
+        button.innerHTML = "Cancelar Reserva" ;
         button.setAttribute('id', 'buttonCard' );
 
 
@@ -86,10 +86,9 @@ class InfoRervaCard{
       }   
 
       action(event){
+        console.log(">>>>");
         event.preventDefault() ;  //Previene Ejecución de accion por defecto       
-        
-
-
+        window.localStorage.setItem('reservationToDelete', this.id);
 
     }
 

@@ -14,12 +14,7 @@ if (user === null) {
 
 
 VerReservasId.addEventListener('click', async function (event) {
-    if ( sala === null) {
-        window.location.href = '/NoReservas.html';
-      }else{
-        window.location.href = '/InfoMiReserva.html';
-      }
-
-    }); 
+  window.location.href = '/InfoMiReserva.html';
+}); 
 
     

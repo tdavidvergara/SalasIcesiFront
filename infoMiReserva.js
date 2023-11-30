@@ -3,6 +3,7 @@ var foto = document.getElementById('foto') ;
 var cancelarButton = document.getElementById('cancelarButton') ;
 var jsonSala;   
 var spinnerContainer = document.querySelector('.spinner-container');
+
 if (user === null) {
     window.location.href = "/Registro.html";
 } else {
@@ -28,8 +29,6 @@ async function getInformation() {
         jsonSala.forEach(salon => {
             var card = new InfoRervaCard(salon);
             foto.appendChild(card.render());
-            console.log(card) ;
-            window.localStorage.setItem('salaId', card.id) ;
         });
 
 
@@ -40,9 +39,9 @@ async function getInformation() {
 
 
 cancelarButton.addEventListener('click',function(){
-    let valorDelBoton = cancelarButton.innerHTML;
-    console.log(valorDelBoton) ; 
-    deleteRoom(valorDelBoton) ;
+    let id = window.localStorage.getItem('reservationToDelete');
+    console.log(`Vamos a eliminar ${id}`); 
+    deleteRoom(id);
 
 }) ;
 
@@ -66,7 +65,7 @@ function hideSpinner(duration = 0) {
         }
     });
     if (response.status === 200) {
-        localStorage.removeItem= 'salaId' ;
+        localStorage.removeItem('salaId') ;
         window.location.href= '/ReservaCancelada.html'; 
 
       
