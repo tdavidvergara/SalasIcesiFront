@@ -6,30 +6,25 @@ console.log(sala) ;
 var CATEGORIA = localStorage.getItem('Categoria')  ;
 
 
-if (user === null) {
-    window.location.href = "/Registro.html";
+  if (user === null) {
+      window.location.href = "/Registro.html";
 
-} else {
-    console.log(user);
+  } else {
+      console.log(user);
 
-}
-//let data = JSON.parse(user);
+  }
 
+  if(CATEGORIA === 'ESTUDIANTE'){
 
-
-VerReservasId.addEventListener('click', async function (event) {
-  window.location.href = '/InfoMiReserva.html';
-}); 
-
-
-/*VerReservasId.addEventListener('click', async function (event) {
-    if ( sala === null) {
-        window.location.href = '/NoReservas.html';
-      }else{
+  
+      VerReservasId.addEventListener('click', async function (event) {
         window.location.href = '/InfoMiReserva.html';
-      }
+      }); 
 
-    }); */
+
+  }
+
+
 
 
     
