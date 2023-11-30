@@ -2,7 +2,9 @@ const VerReservasId = document.getElementById('VerReservasId');
 var user = JSON.parse(localStorage.getItem('user'));
 var sala = JSON.parse(localStorage.getItem('jsonSala'));
 console.log(sala) ;
+
 var CATEGORIA = localStorage.getItem('Categoria')  ;
+
 
 if (user === null) {
     window.location.href = "/Registro.html";
@@ -14,6 +16,12 @@ if (user === null) {
 //let data = JSON.parse(user);
 
 
+
+VerReservasId.addEventListener('click', async function (event) {
+  window.location.href = '/InfoMiReserva.html';
+}); 
+
+
 /*VerReservasId.addEventListener('click', async function (event) {
     if ( sala === null) {
         window.location.href = '/NoReservas.html';
@@ -22,5 +30,6 @@ if (user === null) {
       }
 
     }); */
+
 
     

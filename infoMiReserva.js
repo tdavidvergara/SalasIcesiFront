@@ -1,13 +1,15 @@
 var user = JSON.parse(localStorage.getItem('user'));
 var foto = document.getElementById('foto') ;
 var cancelarButton = document.getElementById('cancelarButton') ;
- 
+var jsonSala;   
+var spinnerContainer = document.querySelector('.spinner-container');
+
 if (user === null) {
     window.location.href = "/Registro.html";
-
 } else {
+    showSpinner(2000) ;
+    getInformation() ;
 
-    //
 }
 
 async function getInformation() {
@@ -18,16 +20,15 @@ async function getInformation() {
         }
     });
     if (response.status === 200) {
-        var json = await response.json();
-        console.log(json) ;
-        json.forEach(salon => {
+        jsonSala = await response.json();
+        if (jsonSala === null || jsonSala.length === 0) {
+            hideSpinner(2000) ;
+            window.location.href = '/NoReservas.html';
+        } 
+
+        jsonSala.forEach(salon => {
             var card = new InfoRervaCard(salon);
             foto.appendChild(card.render());
-            console.log(card) ;
-            console.log(card.id)  ;
-            window.localStorage.setItem('salaId', card.id) ;
-
-
         });
 
 
@@ -38,12 +39,26 @@ async function getInformation() {
 
 
 cancelarButton.addEventListener('click',function(){
-    deleteRoom() ;
+    let id = window.localStorage.getItem('reservationToDelete');
+    console.log(`Vamos a eliminar ${id}`); 
+    deleteRoom(id);
 
 }) ;
 
-    async function deleteRoom(){
-    let response = await fetch('http://localhost:8080/salasIcesi/misReservas/cancelar/'+window.localStorage.getItem('salaId'), {
+function showSpinner(duration = 0) {
+    setTimeout(() => {
+        spinnerContainer.style.display = 'none';
+    }, duration);
+}
+
+function hideSpinner(duration = 0) {
+    setTimeout(() => {
+        spinnerContainer.style.display = 'none';
+    }, duration);
+}
+
+    async function deleteRoom(salaId){
+    let response = await fetch('http://localhost:8080/salasIcesi/misReservas/cancelar/'+  salaId, {
         method: 'DELETE',
         headers: {
             'Authorization': '123'
@@ -51,14 +66,9 @@ cancelarButton.addEventListener('click',function(){
     });
     if (response.status === 200) {
         localStorage.removeItem('salaId') ;
-        localStorage.removeItem('jsonSala') ;
-        console.log('jsonSala') ;
-        console.log('salaId') ;
+        window.location.href= '/ReservaCancelada.html'; 
 
-
-        //window.location.href = '/ReservaCancelada.html';
-
-        
+      
     } else {
         console.error('Error al eliminar la sala:', response.status, response.statusText);
 
@@ -66,4 +76,3 @@ cancelarButton.addEventListener('click',function(){
     }
 }
 
-getInformation()

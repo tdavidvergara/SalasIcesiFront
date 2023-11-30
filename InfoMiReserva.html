@@ -16,7 +16,18 @@
       }#foto div{
       margin: 15px;
       
-  }
+      }.spinner-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white ; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; 
+    }
 
     </style>
 </head>
@@ -41,9 +52,15 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
-            <a style="background-color: rgb(235, 72, 72); color: white;" type="button" class="btn btn-primary" id ="cancelarButton">Cancelar reserva</a>
+            <a style="background-color: rgb(235, 72, 72); color: white;border: rgb(235, 72, 72);" type="button" class="btn btn-primary" id ="cancelarButton">Cancelar reserva</a>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="spinner-container">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Cargando...</span>
       </div>
     </div>
 
