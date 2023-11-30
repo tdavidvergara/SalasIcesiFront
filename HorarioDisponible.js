@@ -73,6 +73,7 @@ if(CATEGORIA === 'ADMINNISTRADOR'){
             }
         });
     });
+}
     
     guardarButton.addEventListener('click', async function (event) {
         event.preventDefault();
@@ -187,7 +188,6 @@ guardarButton.addEventListener('click', async function (event) {
         idSala: salaId,
     
     };
-    //darle un atributo a cancelar?????
     var json = JSON.stringify(gestionSalaDTO);
     console.log(json);
     try{
@@ -212,7 +212,10 @@ guardarButton.addEventListener('click', async function (event) {
 
     }
     
-
-
-    
+}catch{
+    alert("error") ;
 }
+
+}) ;
+
+ 
