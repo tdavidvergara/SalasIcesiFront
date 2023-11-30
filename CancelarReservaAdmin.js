@@ -13,7 +13,7 @@ if (user === null) {
     console.log(user);
     getInformation();
 
-    var hora = ""; 
+    var hora = ""; // Inicializar la variable hora fuera del evento click
 
     horarioButtons.forEach(function (button) {
         button.addEventListener('click', function () {
