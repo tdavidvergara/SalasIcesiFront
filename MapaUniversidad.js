@@ -12,7 +12,14 @@ function manejarClicSalon(event) {
     event.preventDefault();
     var salonSeleccionado = event.target.innerHTML;
     window.localStorage.setItem("Edificio", salonSeleccionado);
-    window.location.href = "/Edificio.html";
+    var CATEGORIA = localStorage.getItem('Categoria')  ;
+    if(CATEGORIA === 'ADMINNISTRADOR'){
+        console.log(CATEGORIA) ;
+        window.location.href = "/EdificioAdmin.html";
+    }else if(CATEGORIA === 'ESTUDIANTE'){
+        window.location.href = "/Edificio.html";
+
+    }
 
 }
 

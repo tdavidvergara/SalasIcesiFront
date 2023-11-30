@@ -1,7 +1,6 @@
 const username = document.getElementById('username');
 const password = document.getElementById('password');
 const ingresarId = document.getElementById('IngresarId');
-
 // Verificar si el usuario ya está autenticado antes de mostrar el formulario
 if (window.localStorage.getItem('user') !== null) {
   //window.location.href = '/Registro.html';
@@ -28,18 +27,21 @@ ingresarId.addEventListener('click', async function (event) {
       },
       body: data,
     });
-
-    if (response.status === 200) {
+    let responseData = await response.json();
+    console.log(responseData);
+  if (response.status === 200) {
       // Almacenar los datos del usuario en el almacenamiento local
-      window.localStorage.setItem('user', JSON.stringify(loginUsuarioDTO));
-      let responseData = await response.json();
-      console.log(responseData);
+      window.localStorage.setItem('user', JSON.stringify(responseData));
 
+ 
       // Verificar la categoría y redirigir a la página correspondiente
       if (responseData.categoria === 'ESTUDIANTE' || responseData.categoria === 'PROFESOR') {
-        window.location.href = 'MenuPrincipal.html';
+        localStorage.setItem('Categoria', responseData.categoria)  ;
+       window.location.href = 'MenuPrincipal.html';
       } else if (responseData.categoria === 'ADMINNISTRADOR') {
+        localStorage.setItem('Categoria',responseData.categoria)  ;
         window.location.href = 'AdminPrincipal.html';
+
       } else {
         console.error('Categoría desconocida');
       }

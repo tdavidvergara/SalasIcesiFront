@@ -1,8 +1,6 @@
 var salaCardContainer = document.getElementById('salaCardContainer');
 var salones = document.getElementById('salones') ;
 
-
-
 if(window.localStorage.getItem('user') === null){
 
     window.location.href = "/Registro.html" ;
@@ -14,8 +12,6 @@ if(window.localStorage.getItem('user') === null){
 }
 
 console.log(user); 
-
-
 
 async function getSalas(){
     
