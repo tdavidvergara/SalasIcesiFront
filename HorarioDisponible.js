@@ -113,7 +113,7 @@ if(CATEGORIA === 'ADMINNISTRADOR'){
             window.location.href = '/ReservaHecha.html';
             
         } else {
-            alert('Error en la solicitud');
+            alert('Esta Sala se encuentra INHABILITADA');
             window.localStorage.removeItem(jsonSala) // Evita que queden salas en el local storage no deseadas
             window.location.reload(); // Recargar la página
     
