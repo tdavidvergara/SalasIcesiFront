@@ -73,16 +73,24 @@
 
             <a href="CancelarReservaAdmin.html" style="background-color: #84AAE1; border-color: #84AAE1;" type="button" class="btn btn-primary btn-lg">Cancelar</a>
             <a href="AsignarAdmin.html" style="background-color: #68F66E; border-color: #68F66E;" type="button" class="btn btn-primary btn-lg">Asignar</a>
-            <a  style="background-color: #55e1da; border-color: #55e1da;" type="button" class="btn btn-primary btn-lg">Habilitar</a>
+          <button   style="background-color: #55e1da; border-color: #55e1da;" class="btn btn-primary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#habilitar" aria-expanded="false" aria-controls="collapseExample">
+            Habilitar  
+          </button>
+          <div class="collapse" id="habilitar">
+            <div class="card card-body">
+              IMPORTANTE:
+              Le informamos que al llevar a cabo la siguiente acción, estará habilitando nuevamente el acceso a esta sala de estudio en la Universidad ICESI. Una vez habilitada, la sala estará disponible para realizar reservaciones.
+              <button style ="background-color: rgb(0, 132, 255); border-color:rgb(0, 132, 255); margin: 5px;" type="button" class="btn btn-primary btn-sm" id ="habilitarButton" data-bs-target="#modalConfirmacionHabilitar">Aceptar y Habilitar</button>
+            </div>
+          </div>
             <button style="background-color: #E75656; border-color: #E75656;" class="btn btn-primary btn-lg" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Inhabilitar 
             </button>
-              </p>
               <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     IMPORTANTE:
-                    Por favor, tome en cuenta que al llevar a cabo la siguiente acción, estará desactivando temporalmente el acceso a una sala de estudio en la Universidad ICESI. Esta sala no estará disponible para nuevas reservaciones hasta que usted o algún otro administrador proceda a reactivarla.
-                  <button style ="background-color: red; border-color: red; margin: 5px;" type="button" class="btn btn-primary btn-sm" id ="InhabilitarSala" data-bs-target="#modalConfirmación">Aceptar e inhabilitar</button>
+                    Por favor, tome en cuenta que al llevar a cabo la siguiente acción, estará desactivando temporalmente el acceso a esta sala de estudio en la Universidad ICESI. Esta sala no estará disponible para nuevas reservaciones hasta que usted o algún otro administrador proceda a reactivarla.
+                  <button style ="background-color: red; border-color: red; margin: 5px;" type="button" class="btn btn-primary btn-sm" id ="InhabilitarSala" data-bs-target="#modalConfirmacion" id = "habilitarButton">Aceptar e inhabilitar</button>
                 </div>
               </div>
 
@@ -102,6 +110,21 @@
             Usted ha desactivado exitosamente el acceso a esta sala. Para llevar a cabo acciones adicionales, como asignar o cancelar, será necesario habilitarla nuevamente. Agradecemos su cooperación y comprensión.        </div>
         <div class="modal-footer">
           <button  class="btn btn-secondary" data-bs-dismiss="modal" id ="cerrar" >Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalConfirmacionHabilitar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Sala Habilitada</h1>
+        </div>
+        <div class="modal-body">
+            Usted ha activado exitosamente el acceso a esta sala. Ahroa puede llevar a cabo acciones como asignar o cancelar reservaciones. Gracias por su atención       </div>
+        <div class="modal-footer">
+          <button  class="btn btn-secondary" data-bs-dismiss="modal" id ="cerrarModalConfirmacion">Cerrar</button>
         </div>
       </div>
     </div>
