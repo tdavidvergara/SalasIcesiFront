@@ -1,5 +1,6 @@
 var EdificoId = ['E', 'M', 'B'] ; 
 var user = localStorage.getItem('user');
+var cerrarSesion = document.getElementById('cerrarSesion') ;
 
 if (user === null) {
     window.location.href = "/Registro.html";
@@ -23,8 +24,15 @@ function manejarClicSalon(event) {
 
 }
 
-EdificoId.forEach(function (salonId) {
-    var salonElemento = document.getElementById(salonId);
-    salonElemento.addEventListener('click', manejarClicSalon);
-});
+    EdificoId.forEach(function (salonId) {
+        var salonElemento = document.getElementById(salonId);
+        salonElemento.addEventListener('click', manejarClicSalon);
+    });
+
+    cerrarSesion.addEventListener('click', async function(event){
+        event.preventDefault() ;
+        localStorage.clear();
+        window.location.href = '/Registro.html' ;
+
+    }) ;
 
