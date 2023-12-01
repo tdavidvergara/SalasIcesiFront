@@ -153,6 +153,35 @@ async function getInformation() {
     }
 }
 
+fechaInput.addEventListener("change", async function(){
+    let response = await fetch('http://localhost:8080/salasIcesi/' + sala+"/"+fechaInput.value, {
+        method: 'GET',
+        headers: {
+            'Authorization': '123'
+        }
+    });
+    if (response.status === 200) {
+        let horariosDisponibles = await response.json(); // Esto debería ser un array de horarios disponibles
+        let horariosDisponiblesTexto = horariosDisponibles.map(String);
+          // Recorremos los botones existentes en el DOM
+          let botones = document.getElementsByClassName("btn btn-primary");
+                // Luego, puedes usar el array de horarios disponibles en texto para realizar la comparación
+                for (let i = 0; i < botones.length; i++) {
+                    let horarioBoton = botones[i].innerText;
+                    let aaa = horariosDisponiblesTexto.includes(horarioBoton);
+                    console.log(horariosDisponiblesTexto);
+                    if (aaa) {
+                        botones[i].classList.add("btn-primary-busy");
+                        botones[i].disable = true;
+                    }else{
+                        botones[i].classList.add("btn-primary");
+                    }
+                }
+
+        }
+
+}) ;
+
 
 
  
