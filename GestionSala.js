@@ -48,32 +48,45 @@ inhabilitarSala.addEventListener('click', async function(event){
 
 }) ;
 
-habilitarButton.addEventListener('click', async function(event){
-    event.preventDefault();
-    try{
 
-        let response = await fetch('http://localhost:8080/salasIcesi/administrador/habilitar/'+salaId, {
-            method: 'PUT',
-            headers: {
-                'Authorization': '1'
-            }
-        });
+fechaInput.addEventListener("change", async function(){
+    // Reiniciar los botones antes de hacer una nueva solicitud
+    resetButtons();
 
-        if (response.status === 200) {
-            modalConfirmacionHabilitar.show();
-            cerrarModalConfirmacion.addEventListener('click' , function(){
-            window.location.href  = "/SolicitudCompletada.html"  ;
-            }) ;
-             }else{
-            alert('No se pudo realizar la solicitud') ;
-            window.location.reload() ;
+    let response = await fetch('http://localhost:8080/salasIcesi/' + sala+"/"+fechaInput.value, {
+        method: 'GET',
+        headers: {
+            'Authorization': '123'
         }
-    
-    }catch{
-        alert('No se pudo realizar la solicitud') ;
-        window.location.reload() ;
-    }
-      
+    });
 
-}) ;
+    if (response.status === 200) {
+        let horariosDisponibles = await response.json();
+        let horariosDisponiblesTexto = horariosDisponibles.map(String);
+
+        let botones = document.getElementsByClassName("btn");
+
+        for (let i = 0; i < botones.length; i++) {
+            let horarioBoton = botones[i].innerText;
+            let aaa = horariosDisponiblesTexto.includes(horarioBoton);
+            
+            if (aaa) {
+                botones[i].classList.add("btn-primary-busy");
+                botones[i].disabled = true;
+            } else {
+                botones[i].classList.add("btn-primary");
+            }
+        }
+    }
+});
+
+// Función para reiniciar los botones a su estado original
+function resetButtons() {
+    let botones = document.getElementsByClassName("btn");
+
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].classList.remove("btn-primary-busy");
+        botones[i].disabled = false;
+    }
+}
 
