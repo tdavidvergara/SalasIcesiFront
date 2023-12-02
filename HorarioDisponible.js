@@ -10,6 +10,7 @@ var user = localStorage.getItem('user');
 let data = JSON.parse(user);
 var CATEGORIA = localStorage.getItem('Categoria') ;
 var backId = document.getElementById('backId') ;
+console.log(salaId) ;
 
 
 if (user === null) {
@@ -113,7 +114,7 @@ if(CATEGORIA === 'ADMINNISTRADOR'){
             window.location.href = '/ReservaHecha.html';
             
         } else {
-            alert('Esta Sala se encuentra INHABILITADA');
+            alert('Reintentar');
             window.localStorage.removeItem(jsonSala) // Evita que queden salas en el local storage no deseadas
             window.location.reload(); // Recargar la página
     
@@ -133,6 +134,49 @@ if(CATEGORIA === 'ADMINNISTRADOR'){
     
     
     getInformation();
+
+    fechaInput.addEventListener("change", async function(){
+        // Reiniciar los botones antes de hacer una nueva solicitud
+        resetButtons();
+    
+        let response = await fetch('http://localhost:8080/salasIcesi/' + sala+"/"+fechaInput.value, {
+            method: 'GET',
+            headers: {
+                'Authorization': '123'
+            }
+        });
+    
+        if (response.status === 200) {
+            let horariosDisponibles = await response.json();
+            let horariosDisponiblesTexto = horariosDisponibles.map(String);
+    
+            let botones = document.getElementsByClassName("btn");
+    
+            for (let i = 0; i < botones.length; i++) {
+                let horarioBoton = botones[i].innerText;
+                let aaa = horariosDisponiblesTexto.includes(horarioBoton);
+                
+                if (aaa) {
+                    botones[i].classList.add("btn-primary-busy");
+                    botones[i].disabled = true;
+                } else {
+                    botones[i].classList.add("btn-primary");
+                }
+            }
+        }
+    });
+    
+    // Función para reiniciar los botones a su estado original
+    function resetButtons() {
+        let botones = document.getElementsByClassName("btn");
+    
+        for (let i = 0; i < botones.length; i++) {
+            botones[i].classList.remove("btn-primary-busy");
+            botones[i].disabled = false;
+        }
+    }
+    
+     
 }
     
  
@@ -153,45 +197,3 @@ async function getInformation() {
     }
 }
 
-fechaInput.addEventListener("change", async function(){
-    // Reiniciar los botones antes de hacer una nueva solicitud
-    resetButtons();
-
-    let response = await fetch('http://localhost:8080/salasIcesi/' + sala+"/"+fechaInput.value, {
-        method: 'GET',
-        headers: {
-            'Authorization': '123'
-        }
-    });
-
-    if (response.status === 200) {
-        let horariosDisponibles = await response.json();
-        let horariosDisponiblesTexto = horariosDisponibles.map(String);
-
-        let botones = document.getElementsByClassName("btn");
-
-        for (let i = 0; i < botones.length; i++) {
-            let horarioBoton = botones[i].innerText;
-            let aaa = horariosDisponiblesTexto.includes(horarioBoton);
-            
-            if (aaa) {
-                botones[i].classList.add("btn-primary-busy");
-                botones[i].disabled = true;
-            } else {
-                botones[i].classList.add("btn-primary");
-            }
-        }
-    }
-});
-
-// Función para reiniciar los botones a su estado original
-function resetButtons() {
-    let botones = document.getElementsByClassName("btn");
-
-    for (let i = 0; i < botones.length; i++) {
-        botones[i].classList.remove("btn-primary-busy");
-        botones[i].disabled = false;
-    }
-}
-
- 
